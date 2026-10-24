@@ -1,0 +1,26 @@
+/* ============================================
+   CSS REORGANIZADO Y OPTIMIZADO - Pixelmon Chronicles 2
+   ============================================ */
+
+/* ---------- 1. RESET Y CONFIGURACIÓN GLOBAL ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* ---------- 2. ESTILOS GENERALES DEL BODY ---------- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #2e0a23 30%, #3d0631 70%, #2e0224 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}

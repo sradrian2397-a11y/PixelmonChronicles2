@@ -1,0 +1,185 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background-color: rgba(36, 35, 35, 0);
+
+     &.scrolled {
+    background-color: rgba(36, 35, 35, 0.07);
+    backdrop-filter: blur(5px);
+    border-bottom: none;
+    
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px; 
+            background: linear-gradient(135deg, rgb(16, 218, 249), rgb(0, 15, 152), rgb(0, 15, 152), rgb(84, 2, 156), rgb(84, 2, 156), rgb(0, 15, 152), rgb(0, 15, 152), rgb(16, 218, 249));
+            background-size: 200% 100%;
+            animation: moveGradient 3s linear infinite;
+        }
+    }
+
+    @keyframes moveGradient {
+        0% {
+            background-position: 0% 0%;
+        }
+        100% {
+            background-position: 200% 0%; 
+        }
+    }
+    
+    .logo {
+        width: 100px;
+        height: auto;
+        padding: 10px;
+        position: relative;
+        z-index: 1002;
+        filter: drop-shadow(0 0 7px rgba(80, 35, 215, 0.6));
+    }
+
+    .desktop-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+
+    }
+
+    .menubtn {
+        background-color: #0f0f11;
+        margin: 0 5px;
+        padding: 5px 10px;
+        color: #a0aec0;
+        text-decoration: none;
+        border-radius: 30px;
+        filter: drop-shadow(0 0 7px rgba(80, 35, 215, 0.6));
+
+        &:hover {
+            color: #ffffff;
+            filter: drop-shadow(0 0 7px rgba(80, 35, 215, 255));
+        }
+    }
+
+    .dropdown {
+        display: inline-block;
+        position: relative;
+        font: bold 16px;
+        margin: 0 5px;
+        background-color: #0f0f11;
+        border-radius: 30px;
+        filter: drop-shadow(0 0 7px rgba(80, 35, 215, 0.6));
+
+        &:hover {
+            filter: drop-shadow(0 0 7px rgba(80, 35, 215, 255));
+            .dropdown-content {
+                opacity: 1;
+                visibility: visible;   
+                transform: translateX(-50%) translateY(0);
+
+                a {
+                    animation: slideInDropdownItem 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                }
+            }
+        
+            .dropbtn {
+                color: rgb(255, 255, 255);
+            }
+        }
+    }
+
+    .dropbtn {
+        border-radius: 10px;
+        border: transparent;
+        background-color: transparent;
+        color: #a0aec0;
+        cursor: pointer;
+        transition: color 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        right: auto;
+        background: #0f0f11; // Fondo oscuro estilo UI moderna
+        border: 1px solid #222226;
+        border-radius: 0.5rem;
+        min-width: 220px;
+        z-index: 100;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        padding: 0.4rem 0;
+
+        // Control de visibilidad fluido para permitir animaciones
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(-50%) translateY(-10px); 
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+
+        a {
+            padding: 0.7rem 1rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #a0aec0;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: background 0.2s ease, color 0.2s ease;
+
+            // Estado inicial oculto para la animación en cascada
+            opacity: 0;
+            transform: translateX(40px);
+
+            .icon-wrapper {
+                display: flex;
+                align-items: center;
+                font-size: 1.1rem;
+                color: #22579b;
+                transition: color 0.2s ease;
+            }
+
+            .option-text {
+                font-size: 0.85rem;
+                flex-grow: 1;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.05);
+                color: #ffffff;
+                border-radius: 0px; // Quitamos el redondeado agresivo individual para que encaje en la lista
+
+                .icon-wrapper {
+                    color: #ffffff; // El icono se ilumina en el hover
+                }
+            }
+        }
+    }
+
+    @for $i from 1 through 3 {
+        .dropdown:hover .dropdown-content a:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.10}s;
+        }
+    }
+
+    @keyframes slideInDropdownItem {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+}
+
+
