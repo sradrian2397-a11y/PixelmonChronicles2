@@ -2,17 +2,32 @@ import { useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/NavBar.jsx';
 import Home from './pages/Home.jsx';
+import Login from './pages/Login.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './App.css';
+import AdminStreak from './pages/AdminStreak.jsx';
 
 function Footer() {
   return <footer style={{ padding: '10px', background: '#282c34', color: 'white', marginTop: '20px' }}>Pie de Página de Pixelmon (Temporal)</footer>;
 }
 
-// 2. Función simulada del Hook de Autenticación (Hasta que migremos el sistema de login)
+// Hook de Autenticación REAL (Lee desde el localStorage)
 function useAuth() {
+  const token = localStorage.getItem('token');
+  const userString = localStorage.getItem('user');
+  
+  let user = null;
+  try {
+    if (userString) {
+      user = JSON.parse(userString);
+    }
+  } catch (e) {
+    console.error("Error al parsear el usuario", e);
+  }
+
   return {
-    isAuthenticated: false,
-    user: null,
+    isAuthenticated: !!token, // Es true si el token existe
+    user: user,
     loading: false
   };
 }
@@ -32,18 +47,17 @@ function AppLayout() {
         if (user) {
           console.log('👤 Datos del usuario:', {
             id: user.id,
-            nombre: user.name_first || user.firstname,
-            apellido: user.name_last || user.lastname,
             username: user.username,
-            email: user.email,
-            rol: user.root_admin === 1 ? 'admin' : user.rol,
+            // Algunos campos pueden variar dependiendo de lo que devuelva tu backend
+            email: user.email || 'No email',
+            rol: user.rol || 'No rol',
           });
         } else {
           console.log('👤 No hay datos de usuario disponibles.');
         }
       }
     }
-  }, [loading, isAuthenticated, user]); // <- Añadido user a las dependencias para evitar advertencias
+  }, [loading, isAuthenticated, user]);
 
   if (loading) {
     return <div className="App layout-ct"><p>Cargando...</p></div>;
@@ -54,7 +68,29 @@ function AppLayout() {
       {!hideNavAndFooter && <Navbar />}
       <main className='main-ct'>
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* Ruta PÚBLICA */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Ruta PROTEGIDA (Home) */}
+          <Route 
+            path="/" 
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            } 
+          />
+
+          <Route 
+            path="/admin/streak" 
+            element={
+              <ProtectedRoute>
+                <AdminStreak />
+              </ProtectedRoute>
+            } 
+          />
+
+          
         </Routes>
       </main>
       {!hideNavAndFooter && <Footer />}
@@ -62,7 +98,7 @@ function AppLayout() {
   );
 }
 
-// 3. Componente principal que envuelve AppLayout con el Router (Requisito obligatorio de react-router-dom)
+// Componente principal que envuelve AppLayout con el Router
 function App() {
   return (
     <div className="App layout-ct">
@@ -73,5 +109,4 @@ function App() {
   );
 }
 
-// 4. Exportación por defecto obligatoria para que index.js pueda arrancar la web
 export default App;

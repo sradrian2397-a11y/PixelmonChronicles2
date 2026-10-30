@@ -1,8 +1,6 @@
 /* ============================================
-   CSS REORGANIZADO Y OPTIMIZADO - Pixelmon Chronicles 2
+   RESET Y CONFIGURACIÓN GLOBAL
    ============================================ */
-
-/* ---------- 1. RESET Y CONFIGURACIÓN GLOBAL ---------- */
 * {
     margin: 0;
     padding: 0;
@@ -10,17 +8,41 @@
 }
 
 html, body {
-    height: 100%;
     width: 100%;
-    overflow: hidden;
+    min-height: 100vh;
 }
 
-/* ---------- 2. ESTILOS GENERALES DEL BODY ---------- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #0a0a0a 0%, #2e0a23 30%, #3d0631 70%, #2e0224 100%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    background-attachment: fixed; /* Para que el fondo no se corte al bajar */
+}
+
+/* ============================================
+   BARRA DE SCROLL PERSONALIZADA
+   ============================================ */
+
+/* Para Chrome, Edge y Safari */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a; /* Fondo negro */
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgb(16, 218, 249), rgb(84, 2, 156)); /* Degradado azul a morado */
+    border-radius: 10px;
+    border: 2px solid #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgb(84, 2, 156), rgb(16, 218, 249)); 
+}
+
+/* Para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(84, 2, 156) #0a0a0a;
 }

@@ -1,0 +1,340 @@
+/* --- NUEVO ENCABEZADO --- */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%; /* Asegura que ocupe el ancho */
+}
+
+.logo-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.logo-icon {
+    width: 70px; 
+    height: 70px;
+    border-radius: 50%;
+    padding: 8px;
+    background: linear-gradient(135deg, rgba(71, 22, 69, 0.281), rgba(40, 5, 63, 0.3));
+    box-shadow: 0px 1px 20px rgb(187, 18, 18);
+    border: 2px solid rgba(255, 0, 255, 0.5);
+    flex-shrink: 0;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 1px 25px rgb(187, 18, 18);
+    }
+
+    @media (min-width: 768px) {
+        width: 90px;
+        height: 90px;
+        padding: 10px;
+        border: 3px solid rgba(255, 0, 255, 0.5);
+    }
+}
+
+.main-title {
+    /* Ajustamos el clamp para que el máximo sea 2.8rem en lugar de 3rem */
+    font-size: clamp(1.5rem, 4vw, 2.8rem); 
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: transparent;
+    background: linear-gradient(135deg, #740391 0%, #ff00bf 50%, #9900ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    filter: drop-shadow(0 0 15px rgba(116, 3, 145, 0.8)); 
+    
+    /* Esto evita que el número 2 salte a la siguiente línea */
+    white-space: nowrap; 
+    margin: 0;
+    padding: 0;
+}
+
+.separator {
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, #91119f 50%, transparent 100%);
+    margin: 0 auto 30px auto;
+    width: 60%; /* Un poco más corto para que se vea elegante */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(145, 17, 159, 0.5);
+}
+/* --- FIN DEL ENCABEZADO --- */
+
+
+.login-ct {
+    min-height: calc(90vh - 100px);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    h2 {
+        color: #fff;
+        font-size: 1.5rem;
+        background: linear-gradient(135deg, #91119f,#de678b, #91119f);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+        filter: drop-shadow(0 0 7px rgba(80, 35, 215, 0.843));
+        
+        @media (min-width: 768px) {
+            font-size: 1.75rem;
+        }
+    }
+
+    .error-message {
+        background-color: rgba(255, 0, 0, 0.444);
+        color: white;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.form-ct {
+    position: relative;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: transparent;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    
+    @media (min-width: 768px) {
+        padding: 2rem;
+        max-width: 550px;
+    }
+    
+    &::before {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        background: conic-gradient(from var(--angle), 
+            transparent 0deg, 
+            transparent 45deg,
+            #6d28d9 45deg, 
+            #6d28d9 90deg,
+            transparent 90deg, 
+            transparent 135deg,
+            #ec4899 135deg, 
+            #ec4899 180deg,
+            transparent 180deg, 
+            transparent 225deg,
+            #6d28d9 225deg, 
+            #6d28d9 270deg,
+            transparent 270deg, 
+            transparent 315deg,
+            #ec4899 315deg, 
+            #ec4899 360deg);
+        border-radius: inherit;
+        z-index: -1;
+        animation: glowing-border 8s linear infinite;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        padding: 10px;
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        border-radius: calc(1rem - 2px);
+        background: rgba(26, 26, 26, 0.92);
+        z-index: -1;
+    }
+
+    @keyframes glowing-border {
+        from {
+            --angle: 0deg;
+        }
+        to {
+            --angle: 360deg;
+        }
+    }
+
+    input {
+        padding: 0.5rem;
+        border: 1px solid #474545;
+        border-radius: 0.25rem;
+        font-size: 0.9rem;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        
+        @media (min-width: 768px) {
+            font-size: 1rem;
+            padding: 0.6rem;
+        }
+    }
+
+    .password-container {
+        position: relative;
+        width: 100%;
+        
+        input {
+            padding-right: 40px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e1;
+            
+            &:hover {
+                opacity: 0.7;
+                color: white;
+            }
+        }
+    }
+
+    .error-message {
+        background-color: rgba(255, 0, 0, 0.444);
+        color: white;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        
+        &.success-message {
+            background-color: rgba(0, 255, 0, 0.444);
+            color: white;
+        }
+    }
+
+    .password-group {
+        display: flex;
+        gap: 0.75rem;
+        width: 100%;
+        
+        @media (min-width: 768px) {
+            gap: 1rem;
+        }
+        
+        .password-container {
+            flex: 1;
+        }
+    }
+
+    .floating-input-container {
+        position: relative;
+        
+        .floating-input {
+            width: 100%;
+            padding: 0.7rem 0.75rem;
+            border: 1px solid #474545;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            transition: all 0.2s;
+            
+            @media (min-width: 768px) {
+                padding: 0.75rem 1rem;
+                font-size: 1rem;
+            }
+            
+            &:focus {
+                outline: none;
+                border-color: #6d28d9;
+                box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.2);
+            }
+
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover, 
+            &:-webkit-autofill:focus, 
+            &:-webkit-autofill:active {
+                /* Usamos un gris muy oscuro que encaje con el fondo del form, en lugar de negro puro */
+                -webkit-box-shadow: 0 0 0 30px #1a1a1a inset !important; 
+                -webkit-text-fill-color: #ffffff !important; 
+                
+                /* Forzamos que el borde sea el original (#474545) y no el blanco del navegador */
+                border: 1px solid #474545 !important;
+                
+                /* Mantenemos la transición para que no parpadee en blanco */
+                transition: background-color 5000s ease-in-out 0s; 
+            }
+
+            /* Si el input autocompletado recibe un clic (focus), que se ponga morado */
+            &:-webkit-autofill:focus {
+                border-color: #6d28d9 !important;
+                -webkit-box-shadow: 0 0 0 30px #1a1a1a inset  0 0 0 2px rgba(109, 40, 217, 0.2) !important; 
+            }
+        }
+        
+        .floating-label {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            pointer-events: none;
+            transition: all 0.2s ease;
+            background-color: transparent;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            
+            @media (min-width: 768px) {
+                left: 1rem;
+                font-size: 1rem;
+            }
+        }
+        
+        .floating-input:focus,
+        .floating-input:not(:placeholder-shown) {
+            padding-top: 0.9rem;
+            padding-bottom: 0.4rem;
+            
+            @media (min-width: 768px) {
+                padding-top: 1rem;
+                padding-bottom: 0.5rem;
+            }
+            
+            & + .floating-label {
+                top: 0.3rem;
+                transform: translateY(0);
+                font-size: 0.65rem;
+                color: #a78bfa;
+                
+                @media (min-width: 768px) {
+                    top: 0.4rem;
+                    font-size: 0.75rem;
+                }
+            }
+        }
+    }
+}

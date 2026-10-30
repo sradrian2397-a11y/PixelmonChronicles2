@@ -1,0 +1,190 @@
+/* src/styles/AdminStreak.scss */
+
+/* --- ESTILOS DE LA PÁGINA --- */
+.admin-streak-ct {
+    padding: 20px;
+    
+    .admin-title {
+        color: #e0aaff;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 30px;
+        text-shadow: 0 0 10px rgba(151, 22, 180, 0.5);
+    }
+
+    .btn-add {
+        background: linear-gradient(135deg, #ec4899, #be185d);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 20px;
+        transition: 0.3s;
+        
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+        }
+    }
+
+    .table-container {
+        background-color: rgba(47, 41, 41, 0.995);
+        border: 2px solid rgb(106, 0, 255);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 0 25px rgba(107, 81, 81, 0.683), 0 10px 20px rgba(99, 6, 120, 0.973);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #a0aec0;
+
+        th {
+            background-color: rgba(20, 20, 20, 0.8);
+            padding: 15px;
+            text-align: center;
+            color: #e0aaff;
+            border-bottom: 2px solid #333;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+
+            button {
+                background: transparent;
+                border: 1px solid;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: 0.2s;
+            }
+
+            .btn-edit {
+                color: #facc15;
+                border-color: #facc15;
+                &:hover { background: rgba(250, 204, 21, 0.1); }
+            }
+
+            .btn-delete {
+                color: #f56565;
+                border-color: #f56565;
+                &:hover { background: rgba(245, 101, 101, 0.1); }
+            }
+        }
+    }
+}
+
+/* --- ESTILOS DEL MODAL (FUERA DEL ADMIN-STREAK-CT) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.modal-content {
+    background-color: #1a1a1a !important; /* Forzamos el fondo oscuro */
+    border: 2px solid #6d28d9 !important;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 30px rgba(109, 40, 217, 0.4);
+    color: white !important;
+
+    h3 {
+        color: #e0aaff !important;
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #a0aec0 !important;
+        }
+
+        input {
+            width: 100% !important;
+            padding: 10px !important;
+            background-color: rgba(0, 0, 0, 0.6) !important; /* Fondo oscuro para los inputs */
+            border: 1px solid #474545 !important;
+            border-radius: 5px !important;
+            color: white !important;
+            appearance: none; /* Quita el estilo por defecto del navegador */
+            
+            &:focus {
+                outline: none;
+                border-color: #ec4899 !important;
+                box-shadow: 0 0 5px rgba(236, 72, 153, 0.5);
+            }
+        }
+    }
+    
+    /* Estilos para el texto de confirmación de borrado */
+    p {
+        color: #a0aec0 !important;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .modal-actions {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+
+        button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-cancel {
+            background-color: #333 !important;
+            color: white !important;
+            &:hover { background-color: #444 !important; }
+        }
+
+        .btn-confirm {
+            background-color: #ec4899 !important;
+            color: white !important;
+            &:hover { background-color: #be185d !important; }
+        }
+        
+        .btn-confirm-delete {
+            background-color: #dc3545 !important;
+            color: white !important;
+            &:hover { background-color: #a71d2a !important; }
+        }
+    }
+}

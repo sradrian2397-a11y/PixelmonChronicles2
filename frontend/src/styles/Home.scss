@@ -1,0 +1,252 @@
+.home-ct {
+
+    .arceus {
+        color: #debc21c2;
+        filter: drop-shadow(0 0 7px rgb(245, 245, 246));        
+    }
+
+    .darkrai {
+        color: #252222c2;
+        filter: drop-shadow(0 0 7px rgb(245, 245, 246));
+    }
+    
+    .cresselia {
+        color: #ee2ccdc2;
+        filter: drop-shadow(0 0 7px rgb(245, 245, 246));
+    }
+
+    .home-menu {
+        background-color: #3f213be8;
+        border-radius: 2rem;
+        border: 5px solid rgba(151, 22, 180, 0.731);
+
+        box-shadow: 
+        0 0 25px rgba(107, 81, 81, 0.683), 
+        0 10px 20px rgba(99, 6, 120, 0.973);
+     
+
+        .menu-row {
+
+            background-color: rgba(47, 41, 41, 0.995);
+            color: #a0aec0;
+            border: 2px solid rgb(106, 0, 255);
+            border-radius: 30px;
+            margin-bottom: 1.5rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        
+            &.one {
+                font-size: 1.3rem;
+
+                p {
+                    text-align: justify;
+                    margin: 0;
+                    hyphens: auto;
+                }
+
+            }
+        }
+    }
+
+    .streak-container {
+        display: flex;
+        flex-direction: column;
+        .streak-header {
+            border-bottom: 1px solid rgba(151, 22, 180, 0.3);
+            padding-bottom: 15px;
+
+            h3 {
+                color: #e0aaff;
+                font-weight: 800;
+                text-shadow: 0 0 10px rgba(151, 22, 180, 0.5);
+            }
+
+            p {
+                color: #b7b5bc;
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+                margin-top: 5px;
+            }
+        }
+
+        .streak-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+
+        }
+
+        .streak-row {
+            display: flex;
+            align-items: center;
+            background-color: rgba(20, 20, 20, 0.8);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+
+            flex: 1; 
+            min-height: 60px; 
+
+            /* Número gigante izquierda */
+            .day-number {
+                font-size: 2rem;
+                font-weight: 900;
+                color: #4b5563; /* Gris por defecto */
+                min-width: 50px;
+                text-align: center;
+                line-height: 1;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+
+            /* Info central */
+            .day-info {
+                flex-grow: 1;
+                text-align: left;
+                padding-left: 15px;
+
+                h4 {
+                    margin: 0;
+                    font-size: 1.1rem;
+                    color: #a0aec0;
+                    font-weight: 700;
+                }
+                p {
+                    margin: 0;
+                    font-size: 0.75rem;
+                    color: #718096;
+                    margin-top: 3px;
+                }
+            }
+
+            /* Botones derecha */
+            .day-action {
+                min-width: 120px;
+                display: flex;
+                justify-content: flex-end;
+
+                button, span {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 8px 15px;
+                    border-radius: 8px;
+                    font-weight: bold;
+                    font-size: 0.85rem;
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                }
+
+                .btn-claim {
+                    background: linear-gradient(135deg, #ec4899, #be185d);
+                    color: white;
+                    box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+                    
+                    &:hover {
+                        transform: scale(1.05);
+                        box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+                    }
+                }
+
+                .btn-claimed {
+                    background: transparent;
+                    color: #6d28d9;
+                    border: 1px solid #6d28d9;
+                }
+
+                .btn-locked {
+                    background: transparent;
+                    color: #4b5563;
+                    border: 1px solid #333;
+                    cursor: not-allowed;
+                }
+            }
+
+            /* --- ESTADOS --- */
+            &.completed {
+                border-color: rgba(109, 40, 217, 0.5);
+                background: linear-gradient(90deg, rgba(109, 40, 217, 0.1), rgba(20, 20, 20, 0.8));
+                .day-number { color: #6d28d9; }
+            }
+
+            &.today {
+                border-color: #ec4899;
+                background: linear-gradient(90deg, rgba(236, 72, 153, 0.15), rgba(20, 20, 20, 0.8));
+                box-shadow: 0 0 15px rgba(236, 72, 153, 0.2);
+                transform: translateX(5px);
+
+                .day-number { 
+                    color: #ec4899; 
+                    text-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+                }
+                .day-info h4 { color: white; }
+                .day-info p { color: #fbcfe8; }
+            }
+
+            &.locked {
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+@media (max-width: 1032px) {
+    .one {
+        display: none; /* Ajusta este valor si es necesario */
+    }
+}
+
+@media (max-width: 768px) {
+    .streak-container {
+        .streak-row {
+            padding: 8px 10px; /* Menos padding lateral */
+            min-height: 50px;
+
+            .day-number {
+                font-size: 1.5rem; /* Número más pequeño */
+                min-width: 35px;
+            }
+
+            .day-info {
+                padding-left: 10px;
+                padding-right: 5px;
+
+                h4 {
+                    font-size: 0.95rem;
+                }
+                
+                p {
+                    font-size: 0.7rem; /* Texto de recompensas más pequeño */
+                    line-height: 1.2;
+                }
+            }
+
+            .day-action {
+                min-width: 85px; /* Botón más compacto */
+
+                button, span {
+                    padding: 6px 10px;
+                    font-size: 0.7rem;
+                    gap: 4px;
+                }
+            }
+        }
+    }
+}
+
+/* En móviles muy pequeños (como el de tu captura), ocultamos el texto largo de recompensas para que quepa todo */
+@media (max-width: 576px) {
+    .streak-container {
+        .streak-row {
+            .day-info {
+                p {
+                    display: none; /* Ocultamos la descripción de recompensas */
+                }
+            }
+        }
+    }
+}
