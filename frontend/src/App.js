@@ -6,6 +6,7 @@ import Login from './pages/Login.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './App.css';
 import AdminStreak from './pages/AdminStreak.jsx';
+import AdminGacha from './pages/AdminGacha';
 
 function Footer() {
   return <footer style={{ padding: '10px', background: '#282c34', color: 'white', marginTop: '20px' }}>Pie de Página de Pixelmon (Temporal)</footer>;
@@ -88,6 +89,14 @@ function AppLayout() {
                 <AdminStreak />
               </ProtectedRoute>
             } 
+          />
+
+          <Route 
+            path="/admin/gacha" 
+            element={
+              <ProtectedRoute>
+                <AdminGacha />
+              </ProtectedRoute>} 
           />
 
           

@@ -179,7 +179,7 @@
         }
     }
 
-    @for $i from 1 through 3 {
+    @for $i from 1 through 10 {
         .dropdown:hover .dropdown-content a:nth-child(#{$i}) {
             animation-delay: #{$i * 0.10}s;
         }

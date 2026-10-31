@@ -133,6 +133,10 @@ export default function Navbar() {
                                         <FaGift /> 
                                         <h5 className="m-0 ms-2">LOGIN DIARIO</h5>
                                     </Link>
+                                    <Link to="/admin/gacha" className="d-flex px-3 align-items-center">
+                                        <FaGift /> 
+                                        <h5 className="m-0 ms-2">GACHAPÓN</h5>
+                                    </Link>
                                 </div>
                             </>
                         )}
@@ -172,6 +176,7 @@ export default function Navbar() {
                                     <Link to="/pixelmonstore" onClick={closeMenu}>Imágenes</Link>
                                     <Link to="/minecraftstore" onClick={closeMenu}>Usuarios</Link>
                                     <Link to="/admin/streak" onClick={closeMenu}>Login Diario</Link>
+                                    <Link to="/admin/gacha" onClick={closeMenu}>Gachapón</Link>
                                 </div>
                             </>
                         )}

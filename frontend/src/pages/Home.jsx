@@ -3,6 +3,8 @@ import axios from 'axios';
 import '../styles/Home.scss';
 import { ENV } from '../utils/env.js';
 import { FaCheck, FaGift, FaLock } from 'react-icons/fa';
+import GachaPanel from '../components/GachaPanel'; // <-- AÑADE ESTE IMPORT
+
 
 function Home() {
   const [currentStreak, setCurrentStreak] = useState(0);
@@ -133,7 +135,10 @@ function Home() {
           </div>
 
           <div className='col-12 col-md-2'>
-            <div className='menu-row right p-4 h-100'></div>
+            <div className='menu-row right p-4 h-100'>
+              <GachaPanel />
+            </div>
+            
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import http from 'http';
 import { Server } from 'socket.io';
 import authRoutes from './routes/auth.routes.js';
 import streakRoutes from './routes/streak.routes.js';
+import gachaRoutes from './routes/gacha.routes.js';
 
 dotenv.config();
 
@@ -27,8 +28,11 @@ app.get('/api/status', (req, res) => {
   res.json({ status: "online", message: "🚀 Ecosistema Pixelmon Chronicles 2 listo y conectado" });
 });
 
+
+// RUTAS
 app.use('/api/auth', authRoutes);
 app.use('/api/streak', streakRoutes);
+app.use('/api/gacha', gachaRoutes);
 
 io.on('connection', (socket) => {
   console.log('⚡ Cliente conectado por Socket al nuevo backend:', socket.id);
